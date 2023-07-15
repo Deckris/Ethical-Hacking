@@ -1,0 +1,24 @@
+Linux Login Bypass
+
+DISCLAIMER: This is ONLY for educational purposes. Do not bypass a Linux PC that you have no legal right or permission to bypass. 
+            Instead, use this guide to reset you Linux Account Password if you forgot it, or help a friend who has this issue! Be kind :)
+
+software used: Kubuntu 19
+
+1) Check if the GRUB boot-loader is shown before the initialization of the Linux OS
+2) If you don't see the GRUB, you need to follow these steps:
+    1) From the /home or /root directory:
+        sudo nano /etc/default/grub
+    2) Put a '#' in front of the "GRUB_HIDDEN_TIMEOUT=0"
+    3) Make GRUB have some delay and change the GRUB_TIMEOUT=0 to any seconds you want (5 is okey)
+    4) sudo update-grub && reboot
+3) While waiting in GRUB press 'e'
+4) Scroll down and search for "linux" on the left side and /boot/vlminuz... on the right 
+5) Change the "ro quiet splash $vt_handoff" with rw init=/bin/bash
+6) Ctrx + X or F10 for saving and exit, then ENTER to boot
+7) Now you should have a terminal like: root@(node)
+8) Mount the system: 
+    mount | grep -w /
+9) passwd (username) to change password of local user 
+
+Have fun reset ethically your password!
