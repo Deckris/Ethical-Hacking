@@ -1,0 +1,31 @@
+Windows 7 & 10 login bypass
+
+DISCLAIMER: This is ONLY for educational purposes. Do not bypass a windows PC that you have no legal right or permission to bypass. 
+            Instead, use this guide to reset you Windows Account Password if you forgot it, or help a friend who has this issue! Be kind :)
+
+software used: Linux Live OS 
+               chntpw (to edit the SAM files)
+
+Instructions: 
+1)  Make a Live CD/Live Usb Linux OS (Ubuntu and Mint tested and working)
+2)  Connect to the internet and open a terminal
+3)  Install chntpw using:
+      sudo add-apt-repository universe
+      sudo apt-get update
+      sudo apt-get install chntpw
+4)  Find the windows partition with the command:
+      sudo sfdisk -l
+5)  Make a directory to mount Windows there:
+      mkdir ~/winmount
+6)  Mount Windows:
+      sudo mount /dev/sda2 ~/winmount (/dev/sda2 is the windows partition, in your case it could have another name)
+7)  Navigate to System32/config directory:
+      cd ~/winmount/Windows/System32/config/
+8)  Start the chntpw tool there to edit the SAM database (Security Account Manager):
+      sudo chntpw -i SAM
+9)  Press 1 to edit the users passwords
+10) Put the RID and then press 1 to clear the password 
+
+Editing the password was not working for me 
+
+Hope this guide helps and do not need to format your Windows Machine if you got locked away! 
